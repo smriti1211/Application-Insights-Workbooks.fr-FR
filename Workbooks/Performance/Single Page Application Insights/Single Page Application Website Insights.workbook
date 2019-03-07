@@ -1,0 +1,666 @@
+{
+    "version": "Notebook/1.0",
+    "isLocked": true,
+    "items": [
+        {
+            "type": 1,
+            "content": {
+                "json": "# <a name=\"initial-load-performance-insights-of-single-page-applications\"></a>Insights sur les performances du chargement initial des applications monopages\nCe modèle de classeur vous permet de voir les données de performances de votre application monopage enregistrées par la <a href=\"https://github.com/Microsoft/Mezzurite\">bibliothèque de minutage Mezzurite</a> et par <a href=\"https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite\">le plug-in Mezzurite d’Application Insights</a>\n\n"
+            },
+            "conditionalVisibility": null
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "e20e78fc-f0d0-40ba-b183-d68b351f91c3",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "has_Mezzurite_Data",
+                        "type": 1,
+                        "isRequired": false,
+                        "query": "customEvents\r\n| filter name == \"mz\"\r\n| where timestamp > ago(90d)\r\n| summarize value = tostring(sign(count()))\r\n\r\n\r\n\r\n\r\n\r\n",
+                        "isHiddenWhenLocked": true,
+                        "timeContextFromParameter": null,
+                        "resourceType": "microsoft.insights/components"
+                    }
+                ],
+                "style": "pills",
+                "resourceType": "microsoft.insights/components"
+            },
+            "conditionalVisibility": null
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<p><strong><h2>Ce classeur n’a pas pu se charger, car aucune donnée de minutage Mezzurite n’a été détectée.</h2></strong></p>\n<p>\nPour configurer Mezzurite, suivez le guide ci-dessous pour l’implémentation du framework spécifique à votre site\n<ul>\n<li><a href=\"https://github.com/Microsoft/Mezzurite/blob/master/Mezzurite.React/README.md\">Sites basés sur React</a></li>\n<li> <a href=\"https://github.com/Microsoft/Mezzurite/blob/master/Mezzurite.Angular/README.md\">Sites basés sur Angular</a></li>\n</ul>\n\nUne fois que la bibliothèque de minutage Mezzurite est ajoutée, vous avez besoin de \n<ul>\n<li><a href=\"https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite/blob/master/README.md\">ces étapes d’intégration</a></li>\n</ul></p>\n\n<h3>Écosystème de Mezzurite</h3>\n<table>\n<tr><th>Projet</th><th>Description</th></tr>\n<tr><td><a href=\"https://github.com/Microsoft/ApplicationInsights-JS-Mezzurite\">ApplicationInsights-JS-Mezzurite</a></td><td>Plug-in <a href=\"https://github.com/Microsoft/ApplicationInsights-JS\">Application Insights</a> de Mezzurite</td></tr>\n<tr><td><a href=\"https://github.com/Microsoft/Mezzurite\">Mezzurite</a></td><td>SDK de base pour Mezzurite avec intégration d’Angular, AngularJS et React</td></tr>\n<tr><td><a href=\"https://github.com/Microsoft/Mezzurite-DevTools\">Mezzurite DevTools</a></td><td>Permet de voir les métriques Mezzurite capturées avec une extension du navigateur</td></tr>\n<tr><td><a href=\"https://github.com/Microsoft/vscode-mezzurite\">VSCode Mezzurite</a></td><td>Découvrir quels composants et modules sont instrumentés dans VS Code</td></tr>\n</table>\n"
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isNotEqualTo",
+                "value": "1.0"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<Strong>Le flux du modèle</Strong> :\n\n1. Afficher les performances de vos routes\n2. <strong>Sélectionnez une route</strong> pour aller plus loin dans les diagnostics. \n3. Les graphiques fournis pour la route sélectionnée sont :\n<br>   a. Temps de chargement du composant pour chacun des composants inclus dans la route sélectionnée\n<br>   b. Décomposition du temps de chargement de l’application\n\n<p>**Ces paramètres affectent tous les graphiques ci-dessous :**</p>\n"
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isEqualTo",
+                "value": "1.0"
+            }
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "39725ecb-66f7-40c5-bae7-40bc1eef8ca7",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Duration",
+                        "type": 4,
+                        "description": "Définit l’étendue de l’intervalle de temps du classeur",
+                        "isRequired": true,
+                        "value": {
+                            "durationMs": 2592000000,
+                            "createdTime": "2019-02-13T20:05:00.418Z",
+                            "isInitialTime": false,
+                            "grain": 1,
+                            "useDashboardTimeRange": false
+                        },
+                        "isHiddenWhenLocked": false,
+                        "typeSettings": {
+                            "selectableValues": [
+                                {
+                                    "durationMs": 3600000,
+                                    "createdTime": "2019-02-13T20:05:00.416Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 43200000,
+                                    "createdTime": "2019-02-13T20:05:00.417Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 86400000,
+                                    "createdTime": "2019-02-13T20:05:00.417Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 172800000,
+                                    "createdTime": "2019-02-13T20:05:00.417Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 604800000,
+                                    "createdTime": "2019-02-13T20:05:00.417Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 1209600000,
+                                    "createdTime": "2019-02-13T20:05:00.418Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 2592000000,
+                                    "createdTime": "2019-02-13T20:05:00.418Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 5184000000,
+                                    "createdTime": "2019-02-13T20:05:00.418Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                },
+                                {
+                                    "durationMs": 7776000000,
+                                    "createdTime": "2019-02-13T20:05:00.418Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                }
+                            ],
+                            "allowCustom": false
+                        },
+                        "timeContextFromParameter": null
+                    },
+                    {
+                        "id": "6178b34a-cf9a-42cf-b4b1-3d1ec46ca34c",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Time_Bucket",
+                        "type": 2,
+                        "description": "Regrouper les résultats selon le temps",
+                        "isRequired": true,
+                        "value": "15m",
+                        "isHiddenWhenLocked": false,
+                        "jsonData": "[{\"value\":\"1m\",\"label\":\"Minute\"},\r\n {\"value\":\"15m\",\"label\":\"15 Minutes\"},\r\n {\"value\":\"1h\",\"label\":\"Hour\"},\r\n {\"value\":\"1d\", \"label\": \"Day\"},\r\n {\"value\":\"7d\", \"label\": \"Week\"}\r\n  ]",
+                        "timeContextFromParameter": null
+                    },
+                    {
+                        "id": "7196f5c4-bfe6-4fc0-9712-aa345a56927c",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Percentile",
+                        "type": 2,
+                        "description": "Centile d’après lequel tous les graphiques sont calculés",
+                        "isRequired": true,
+                        "value": "95",
+                        "isHiddenWhenLocked": false,
+                        "jsonData": "[50, 75, 90, 95, 99]",
+                        "timeContextFromParameter": null
+                    },
+                    {
+                        "id": "df4a6862-5029-42c0-9371-2fc97279e1ad",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Country",
+                        "type": 2,
+                        "description": "Affine les résultats pour un pays spécifique",
+                        "isRequired": true,
+                        "query": "customEvents\r\n| where name == \"mz\"\r\n| distinct client_CountryOrRegion\r\n| project b = client_CountryOrRegion, n = client_CountryOrRegion\r\n| union (\r\ndatatable(b:string, n:string )[\r\n'*', 'All Countries'\r\n]\r\n)",
+                        "value": "*",
+                        "isHiddenWhenLocked": false,
+                        "typeSettings": {
+                            "additionalResourceOptions": []
+                        },
+                        "timeContext": {
+                            "durationMs": 0,
+                            "endTime": null,
+                            "createdTime": "2019-01-30T18:31:57.571Z",
+                            "isInitialTime": false,
+                            "grain": 1,
+                            "useDashboardTimeRange": false
+                        },
+                        "timeContextFromParameter": "Duration",
+                        "resourceType": "microsoft.insights/components"
+                    },
+                    {
+                        "id": "a1214636-4e9f-41b3-9502-9b42064553fa",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Browser",
+                        "type": 2,
+                        "description": "Affine les résultats pour un navigateur spécifique",
+                        "isRequired": true,
+                        "query": "customEvents\r\n| where name == \"mz\"\r\n| distinct client_Browser\r\n| project b = client_Browser, n = client_Browser\r\n| union (\r\ndatatable(b:string, n:string )[\r\n'*', 'All Browser Versions'\r\n]\r\n)",
+                        "value": "*",
+                        "isHiddenWhenLocked": false,
+                        "typeSettings": {
+                            "additionalResourceOptions": []
+                        },
+                        "timeContext": {
+                            "durationMs": 0,
+                            "endTime": null,
+                            "createdTime": "2019-01-30T18:32:11.918Z",
+                            "isInitialTime": false,
+                            "grain": 1,
+                            "useDashboardTimeRange": false
+                        },
+                        "timeContextFromParameter": "Duration",
+                        "resourceType": "microsoft.insights/components"
+                    }
+                ],
+                "style": "pills",
+                "resourceType": "microsoft.insights/components"
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isEqualTo",
+                "value": "1.0"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<h2 style=\"text-decoration: underline; margin-bottom: 0;\">Performances de toutes les routes</h2>\nIl s’agit d’une page d’accueil pour votre <strong>application monopage</strong> : elle est mappée au nom de la route dans le code de votre application.\n<p>Sélectionnez une route ci-dessous pour voir les données spécifiques à celle-ci :</p>"
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isEqualTo",
+                "value": "1.0"
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": " let alt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | project ALT = todouble(customMeasurements.ALT), operation_ParentId, Route = tostring(customDimensions.RouteUrl)\r\n    | summarize ALT_Count = count(), percentiles(ALT, {Percentile}) by Route;\r\n\r\nlet vlt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customMeasurements.VLT)\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | project VLT = todouble(customMeasurements.VLT), operation_ParentId, Route = tostring(customDimensions.RouteUrl)\r\n    | summarize VLT_Count = count(), percentiles(VLT, {Percentile}) by Route;\r\n\r\nlet flt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customMeasurements.FVLT)\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | project FLT = todouble(customMeasurements.FVLT), operation_ParentId, Route = tostring(customDimensions.RouteUrl)\r\n    | summarize FLT_Count = count(), percentiles(FLT, {Percentile}) by Route;\r\n\r\nalt \r\n| join vlt on Route\r\n| join flt on Route\r\n| project ['Route Name'] = Route, ['Route Traffic'] = ALT_Count, ['FLT {Percentile}th Percentile'] = round(percentile_FLT_{Percentile}, 0), ['ALT {Percentile}th Percentile'] = round(percentile_ALT_{Percentile},0), ['VLT {Percentile}th Percentile'] = round(percentile_VLT_{Percentile},0)\r\n| order by ['Route Traffic'] desc\r\n\r\n",
+                "showQuery": false,
+                "size": 1,
+                "aggregation": 0,
+                "showAnnotations": false,
+                "exportFieldName": "Route Name",
+                "exportParameterName": "Route",
+                "showAnalytics": false,
+                "timeContext": {
+                    "durationMs": 0,
+                    "endTime": null,
+                    "createdTime": "2019-02-14T18:18:29.200Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                },
+                "timeContextFromParameter": "Duration",
+                "resourceType": "microsoft.insights/components",
+                "visualization": "table",
+                "gridSettings": {
+                    "formatters": [
+                        {
+                            "columnMatch": "Route Traffic",
+                            "formatter": 4,
+                            "formatOptions": {
+                                "palette": "blueDark"
+                            }
+                        },
+                        {
+                            "columnMatch": "FLT 50th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "ALT 50th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "VLT 50th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "FLT 90th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "ALT 90th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "VLT 90th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "FLT 99th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "ALT 99th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "VLT 99th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "FLT 95th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "ALT 95th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "VLT 95th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "FLT 75th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "ALT 75th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        },
+                        {
+                            "columnMatch": "VLT 75th Percentile",
+                            "formatter": 8,
+                            "formatOptions": {
+                                "palette": "greenRed"
+                            },
+                            "numberFormat": {
+                                "unit": 23,
+                                "options": {
+                                    "style": "decimal",
+                                    "useGrouping": true
+                                }
+                            }
+                        }
+                    ],
+                    "filter": true
+                },
+                "tileSettings": {
+                    "showBorder": false,
+                    "titleContent": {
+                        "columnMatch": "Route",
+                        "formatter": 1
+                    },
+                    "leftContent": {
+                        "columnMatch": "percentile_ALT_50",
+                        "formatter": 12,
+                        "formatOptions": {
+                            "palette": "auto"
+                        },
+                        "numberFormat": {
+                            "unit": 17,
+                            "options": {
+                                "maximumSignificantDigits": 3,
+                                "maximumFractionDigits": 2
+                            }
+                        }
+                    }
+                }
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isEqualTo",
+                "value": "1.0"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<hr>\n<h2 style=\"text-decoration: underline; margin-bottom: 0;\">Performances pour la route « {Route} »</h2>\n<p>Le <strong>Temps du premier chargement</strong> (FLT, First Load Time) vous donne la durée du premier chargement de la route.  Il inclut le <strong>Temps de chargement de la première fenêtre d’affichage</strong> (VLT, Viewport Load Time) et le <strong>Temps de chargement de l’application</strong> (ALT, Application Load Time). </p>\n<p>Si la route est atteinte après le premier chargement, il n’y a pas d’<strong>ALT</strong> pour celle-ci.  Il y a seulement un <strong>VLT</strong>.</p>\n\n<p>Ce graphique vous donne une vue d’ensemble de votre site et peut vous indiquer si votre <strong>VLT</strong> ou votre <strong>ALT</strong> a régressé par rapport au <strong>FLT</strong>.</p>\n<p>Quand le <strong>VLT</strong> a régressé, utilisez le graphique « Performances des composants chargés dans la route » pour explorer plus avant ce qui s’est passé dans la page</p>\n\n<p>Pour les régressions d’<strong>ALT</strong>, utilisez le graphique « Performances des sous-minutages de l’application pour la route » pour voir quels sous-minutages affectent votre <strong>ALT</strong>.</p>"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "\r\nlet alt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customMeasurements.ALT)\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | filter customDimensions.RouteUrl == '{Route}'\r\n    | project value = todouble(customMeasurements.ALT), operation_ParentId, Route = tostring(customDimensions.RouteUrl), timestamp\r\n    | summarize ['ALT Percentile (ms)'] = percentiles( value ,{Percentile}) by  bin(timestamp, {Time_Bucket});\r\n\r\nlet vlt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customMeasurements.VLT)\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | filter customDimensions.RouteUrl == '{Route}'\r\n    | project value = todouble(customMeasurements.VLT), operation_ParentId, Route = tostring(customDimensions.RouteUrl), timestamp\r\n    | summarize ['VLT Percentile (ms)'] = percentiles( value ,{Percentile}) by  bin(timestamp, {Time_Bucket});\r\n\r\nlet fvlt = customEvents\r\n    | where name == \"mz\"\r\n    | where isnotempty(customMeasurements.FVLT)\r\n    | where isnotempty(customDimensions.RouteUrl)\r\n    | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n    | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n    | filter customDimensions.RouteUrl == '{Route}'\r\n    | project value = todouble(customMeasurements.FVLT), operation_ParentId, Route = tostring(customDimensions.RouteUrl), timestamp\r\n    | summarize ['FLT Percentile (ms)'] = percentiles( value ,{Percentile}) by  bin(timestamp, {Time_Bucket});\r\n\r\nfvlt\r\n| join alt on timestamp\r\n| join vlt on timestamp\r\n| project timestamp, ['FLT Percentile (ms)'], ['VLT Percentile (ms)'], ['ALT Percentile (ms)']\r\n| render timechart\r\n\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 2,
+                "showAnnotations": false,
+                "showAnalytics": false,
+                "timeContext": {
+                    "durationMs": 0,
+                    "endTime": null,
+                    "createdTime": "2019-02-14T18:18:29.230Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                },
+                "timeContextFromParameter": "Duration",
+                "resourceType": "microsoft.insights/components"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<hr>"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<h2 style=\"text-decoration: underline; margin-bottom: 0;\">Performances des composants chargés dans la route \"{Route}\"</h2>\nSi le <strong>VLT</strong> a régressé, le graphique ci-dessous vous montre tous les composants qui constituent la durée du <strong>VLT</strong>."
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "customEvents\r\n  | where name == \"mz\"\r\n  | where isnotempty(customMeasurements.clt)\r\n  | where customDimensions.metricType == \"VLT\"\r\n  | where isnotempty(customDimensions.RouteUrl)\r\n  | filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n  | filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n  | filter customDimensions.RouteUrl == '{Route}'\r\n  | project value = todouble(customMeasurements.clt), cName= strcat(tostring(customDimensions.componentName),\" \", '(ms)'), Route = tostring(customDimensions.RouteUrl), timestamp\r\n  | summarize percentiles(todouble(value), {Percentile}) by cName, bin(timestamp, {Time_Bucket})\r\n  | render timechart\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 2,
+                "showAnnotations": false,
+                "showAnalytics": false,
+                "timeContext": {
+                    "durationMs": 0,
+                    "endTime": null,
+                    "createdTime": "2019-02-14T18:18:29.259Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                },
+                "timeContextFromParameter": "Duration",
+                "resourceType": "microsoft.insights/components"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<hr>"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<h2 style=\"text-decoration: underline; margin-bottom: 0;\">Performances des sous-minutages du chargement de l’application pour la route « {Route} »</h2>\nCe graphique est utilisé si votre <strong>ALT</strong> a régressé.  Les minutages proviennent ici de l’objet de minutage des performances provenant du navigateur.  Ces sous-minutages proviennent du minutage de la navigation des performances du navigateur et sont basés sur les <a href=\"https://www.w3.org/TR/2012/REC-navigation-timing-20121217/\">standards W3C</a>.  Pour plus d’informations, consultez <a href=\"https://github.com/Microsoft/Mezzurite\">Mezzurite sur GitHub« </a>."
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let data = browserTimings\r\n| filter client_CountryOrRegion == '{Country}' or '{Country}' == '*'\r\n| filter client_Browser == '{Browser}' or '{Browser}' == '*'\r\n| filter url == '{Route}'\r\n| project timestamp , networkDuration , sendDuration , receiveDuration , processingDuration;\r\n\r\nlet send = data\r\n|  summarize ['Send Duration (ms)'] = percentiles(sendDuration, {Percentile}) by bin(timestamp, {Time_Bucket});\r\n\r\nlet receive = data\r\n|  summarize ['Receive Duration (ms)'] = percentiles(receiveDuration, {Percentile}) by bin(timestamp, {Time_Bucket});\r\n\r\nlet network = data\r\n|  summarize ['Network Duration (ms)'] = percentiles(networkDuration, {Percentile}) by bin(timestamp, {Time_Bucket});\r\n\r\nnetwork\r\n| join send on timestamp\r\n| join receive on timestamp\r\n| project timestamp, ['Send Duration (ms)'], ['Receive Duration (ms)'], ['Network Duration (ms)']\r\n| render timechart\r\n\r\n\r\n\r\n\r\n\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 2,
+                "showAnnotations": false,
+                "showAnalytics": false,
+                "timeContext": {
+                    "durationMs": 0,
+                    "endTime": null,
+                    "createdTime": "2019-02-14T18:18:29.277Z",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                },
+                "timeContextFromParameter": "Duration",
+                "resourceType": "microsoft.insights/components",
+                "visualization": "areachart"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Route",
+                "comparison": "isNotEqualTo",
+                "value": null
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "<h1>Définitions</h1>\n<p><strong>SPA (Single Page Application) :</strong> Application monopage basée sur un framework JavaScript, comme Angular ou React\n<p><strong>Route :</strong> Il s’agit de la route de l’application monopage (segment d’URL) pour la page donnée.</p>\n<p><strong>Composant :</strong> Un composant peut être un élément HTML unique ou un groupe d’éléments HTML. Ceux-ci sont définis dans votre code JavaScript et sont les composants de la page de votre application monopage. Une route peut contenir plusieurs composants. Le graphique ci-dessous montre les minutages des performances pour tous les composants présents dans la route actuellement sélectionnée.</p>\n<p><strong>CLT (Component Load Time, Temps de chargement du composant) :</strong> Le temps que prend un composant donné pour se charger sur la page.</p>\n<p><strong>Fenêtre d’affichage :</strong> La zone qui est visible dans votre navigateur.</p>\n<p><strong>VLT (Viewport Load Time, Temps de chargement de la fenêtre d’affichage) :</strong> Le temps nécessaire entre le début de la route et le moment où le dernier composant est chargé dans votre fenêtre d’affichage.</p>\n<p><strong>ALT (Application Load Time, Temps de chargement de l’application) :</strong> Le temps nécessaire entre le début de la navigation et le moment où votre routeur commence à traiter la première route.</p>\n<p><strong>FLT (First Load Time, Temps du premier chargement) :</strong> La métrique globale qui est la somme du <strong>temps de chargement de l’application</strong> et du <strong>temps de chargement de la première fenêtre d’affichage</strong> de notre route.</p>\n<p><h3>Les éléments suivants sont tous extraits de l’objet de minutage des performances du navigateur</h3></p>\n<p><strong>Durée d’envoi</strong> est le délai entre le début de la requête et le début de la demande </p>\n<p><strong>Durée de réception</strong> est le délai entre le début de la réponse et la fin de la réponse</p>\n<p><strong>Durée réseau</strong> est le délai entre le début de la navigation et la fin de la connexion</p>\n<br>\n"
+            },
+            "conditionalVisibility": {
+                "parameterName": "has_Mezzurite_Data",
+                "comparison": "isEqualTo",
+                "value": "1.0"
+            }
+        }
+    ],
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}

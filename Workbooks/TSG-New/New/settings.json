@@ -1,0 +1,14 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "Nouveau",
+    "description": "Guide de résolution des problèmes vide",
+    "icon": "plus.svg",
+    "author": "Microsoft",
+    "galleries": [
+        {
+            "type": "tsg",
+            "resourceType": "microsoft.insights/components",
+            "order": 200
+        }
+    ]
+}

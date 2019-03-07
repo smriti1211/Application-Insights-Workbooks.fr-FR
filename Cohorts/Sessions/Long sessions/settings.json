@@ -1,0 +1,9 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "Sessions longues",
+    "description": "La description s’affiche ici",
+    "icon": "",
+    "tags": [],
+    "author": "Microsoft",
+    "order": 100
+}

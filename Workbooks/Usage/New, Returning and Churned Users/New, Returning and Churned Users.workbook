@@ -1,0 +1,158 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
+    "version": "Notebook/1.0",
+    "items": [
+        {
+            "type": 1,
+            "content": {
+                "json": "# <a name=\"new-returning-and-churned-users\"></a>Utilisateurs nouveaux, récurrents et partis\n\nComment votre application fidélise les clients ? Comprendre l’attrition de votre application, c’est-à-dire quand des personnes utilisent votre application mais n’y reviennent pas, est fondamental pour accroître l’utilisation de votre application. Ce classeur analyse :\n- Utilisation active de votre application\n- Nombre d’utilisateurs partis depuis la période précédente\n- L’opportunité de croissance présentée en retenant davantage de ces utilisateurs."
+            }
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "b3d5a360-d38d-458e-bb47-832d9f5be0e7",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Metric",
+                        "type": 2,
+                        "description": "Définit le nombre de jours dans un mois. Utilisez 30j pour une représentation plus traditionnelle d’un mois. Utilisez 28j pour éviter les hauts et les bas dus aux weekends.",
+                        "isRequired": true,
+                        "multiSelect": null,
+                        "query": "datatable(key: string, display: string)[\r\n'1d', 'Daily Active Users',\r\n'7d', 'Weekly Active Users',\r\n'28d', 'Monthly Active Users (28d)',\r\n'30d', 'Monthly Active Users (30d)',\r\n]",
+                        "value": "28d"
+                    },
+                    {
+                        "id": "a909d4b8-0e7f-4234-b716-8ffb02c480cc",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Activities",
+                        "type": 2,
+                        "description": "Liste séparée par des virgules des activités à prendre en compte (par exemple 'ÉvénementA', 'ÉvénementB', 'ConsultationPageC'). Utilisez '*' si vous voulez inclure tous les événements et toutes les consultations de page.",
+                        "isRequired": true,
+                        "multiSelect": true,
+                        "quote": "'",
+                        "delimiter": ",",
+                        "query": "union customEvents, pageViews\n| where timestamp >= ago(7d)\n| summarize count() by name\n| order by count_ desc\n| project Id=name, Title=name, Selected=false\n| union (\ndatatable(Id:string, Title:string, Selected:boolean)[\n'*', 'All Events and Page Views', true\n]\n)"
+                    },
+                    {
+                        "name": "OtherFilters",
+                        "description": "Autres filtres à utiliser",
+                        "id": "f5554bff-7f79-444a-8073-5f9592474a0c",
+                        "type": 1
+                    },
+                    {
+                        "id": "e047acc1-8ea3-49da-afe8-d6bf36afc61e",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "TimeRange",
+                        "type": 2,
+                        "description": "Plage de temps pour l’analyse",
+                        "isRequired": true,
+                        "multiSelect": null,
+                        "query": "datatable(key:string, display:string) \r\n[ \r\n\"7d\", \"Last 7 days\", \r\n\"14d\", \"Last 14 days\", \r\n\"30d\", \"Last 30 days\", \r\n\"60d\", \"Last 60 days\", \r\n\"90d\", \"Last 90 days\"\r\n] ",
+                        "value": "30d"
+                    }
+                ]
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"active-users\"></a>Active users"
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\nlet monthDefinition = {Metric};\nlet hlls = union customEvents, pageViews\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\n| where name in ({Activities}) or '*' in ({Activities})\n{OtherFilters}\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\n| project DaysToMerge = timestamp, Hlls;\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to timeRange step 1d\n| extend Day = startofday(now() - d)\n| extend R = range(0d, monthDefinition - 1d, 1d)\n| mvexpand R\n| extend ThisMonth = Day - totimespan(R)\n| extend LastMonth = Day - monthDefinition - totimespan(R)\n| project Day, ThisMonth, LastMonth);\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = ThisMonth\n| join kind= inner (hlls) on DaysToMerge \n| project Day, ThisMonthHlls = Hlls\n| union (\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = LastMonth\n| join kind= inner (hlls) on DaysToMerge\n| project Day, LastMonthHlls = Hlls)\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\n| evaluate dcount_intersect(ThisMonth, LastMonth)\n| extend NewUsers = s0 - s1\n| extend ChurnedUsers = -1 * (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\n| project Day, [\"Active Users\"] = s1 + NewUsers, [\"Returning Users\"] = s1, [\"Lost Users\"] = ChurnedUsers, [\"New Users\"] = NewUsers\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "| Métrique | Définition || ----- |: ----- |: ----- | | Utilisateurs actifs | Nombre de combien de personnes ayant utilisé votre application au moins une fois au cours de cette période. Utilisateurs actifs = Utilisateurs récurrents + Nouveaux utilisateurs. | | Utilisateurs récurrents | Nombre de personnes ayant utilisé votre application au moins une fois au cours de cette période et de la période précédente. | | Nouveaux utilisateurs | Nombre de personnes ayant utilisé votre application au moins une fois au cours de la dernière période, mais qui ne l’ont pas utilisée au cours de la période précédente. | | Utilisateurs perdus | Nombre de personnes ayant utilisé votre application au cours de la période précédente, mais pas au cours de cette période. |"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"usage-growth\"></a>Accroissement de l’utilisation\nCe graphique vous montre la tendance des taux d’accroissement par {Period} de votre application. Ceci vous permet d’analyser comment les taux d’accroissement de vos utilisateurs nouveaux, récurrents, perdus et globaux changent au fil du temps. Par exemple, vous voyez si l’accroissement s’accélère, ralentit ou est constant. \n\nLes mesures du bas montrent le taux d’accroissement actuel. La série `Active Users` montre le taux d’accroissement de l’utilisation globale."
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\nlet monthDefinition = {Metric};\nlet hlls = union customEvents, pageViews\n| where timestamp >= startofmonth(now() - 2 * timeRange - 2 * monthDefinition)\n| where name in ({Activities}) or '*' in ({Activities})\n{OtherFilters}\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\n| project DaysToMerge = timestamp, Hlls;\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to 2 * timeRange step 1d\n| extend Day = startofday(now() - d)\n| extend R = range(0d, monthDefinition - 1d, 1d)\n| mvexpand R\n| extend ThisMonth = Day - totimespan(R)\n| extend LastMonth = Day - monthDefinition - totimespan(R)\n| project Day, ThisMonth, LastMonth);\nlet activeUsers = churnSeriesWithHllsToInclude\n| extend DaysToMerge = ThisMonth\n| join kind= inner (hlls) on DaysToMerge \n| project Day, ThisMonthHlls = Hlls\n| union (\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = LastMonth\n| join kind= inner (hlls) on DaysToMerge\n| project Day, LastMonthHlls = Hlls)\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\n| evaluate dcount_intersect(ThisMonth, LastMonth)\n| extend NewUsers = s0 - s1\n| extend ChurnedUsers = -1 * (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\n| project Day, ActiveUsers = s1 + NewUsers, ReturningUsers = s1, ChurnedUsers, NewUsers;\nactiveUsers\n| extend LastPeriod = Day - monthDefinition\n| join kind=inner (activeUsers | project-rename LastPeriod = Day) on LastPeriod\n| project Day, [\"Active Users\"] = 100.0 * (ActiveUsers - ActiveUsers1) / ActiveUsers1, [\"Returning Users\"] = 100.0 * (ReturningUsers - ReturningUsers1) / ReturningUsers1, [\"Lost Users\"] = 100.0 * (ChurnedUsers - ChurnedUsers1) / ChurnedUsers1, [\"New Users\"] = 100.0 * (NewUsers - NewUsers1) / NewUsers1\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"retention-rate\"></a>Taux de rétention\nLe taux de rétention de votre application, défini comme étant les utilisateurs récurrents exprimés en pourcentage du nombre total d’utilisateurs."
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {Metric};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n{OtherFilters}\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange  - 1d) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| extend NewUsers = s0 - s1\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Retention Rate\"] = iff((s1) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers))\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "linechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"ratio-of-returning-to-new-users\"></a>Ratio utilisateurs récurrents / nouveaux utilisateurs\nCe ratio indique la quantité de votre utilisation provient des utilisateurs existants par rapport aux nouveaux utilisateurs. Des ratios plus faibles indiquent une quantité d’attrition plus importante, avec une utilisation provenant principalement de nouveaux utilisateurs."
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {Metric};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n{OtherFilters}\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange  - 1d) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| extend NewUsers = s0 - s1\r\n| extend ChurnedUsers = -1 * (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Returning Users Ratio\"] = 1.0 * s1 / (s1 + NewUsers)",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"growth-opportunity\"></a>Opportunité d’accroissement\n\nDevez-vous vous préoccuper de l’attrition de votre application ? Ce graphique montre le potentiel d’accroissement de l’utilisation de votre application en réduisant l’attrition."
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {Metric};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n{OtherFilters}\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange ) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| extend NewUsers = s0 - s1\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Potential Usage (includes Lost)\"] = ChurnedUsers, [\"Current Users\"] = s1 + NewUsers\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "areachart"
+            }
+        }
+    ]
+}
