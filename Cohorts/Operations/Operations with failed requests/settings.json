@@ -1,0 +1,9 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "<span data-ttu-id=\"ce0a9-101\">Operations avec des requêtes en échec</span><span class=\"sxs-lookup\"><span data-stu-id=\"ce0a9-101\">Operations with failed requests</span></span>",
+    "description": "<span data-ttu-id=\"ce0a9-102\">La description s’affiche ici</span><span class=\"sxs-lookup\"><span data-stu-id=\"ce0a9-102\">description goes here</span></span>",
+    "icon": "",
+    "tags": [],
+    "author": "Microsoft",
+    "order": 200
+}

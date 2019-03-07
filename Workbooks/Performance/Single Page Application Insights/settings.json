@@ -1,0 +1,18 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "<span data-ttu-id=\"58f7d-101\">Insights sur les applications monopages</span><span class=\"sxs-lookup\"><span data-stu-id=\"58f7d-101\">Single Page Application Insights</span></span>",
+    "description": "<span data-ttu-id=\"58f7d-102\">Visualisation de la télémétrie d’une application monopage créée par la bibliothèque de minutage Mezzurite</span><span class=\"sxs-lookup\"><span data-stu-id=\"58f7d-102\">Visiualization of Single Page Application Telemetry created by Mezzurite Timing Library</span></span>",
+    "author": "Microsoft",
+    "tags": [
+        "SPA",
+        "Angular",
+        "React"
+    ],
+    "galleries": [
+        {
+            "type": "workbook",
+            "resourceType": "microsoft.insights/components",
+            "order": 300
+        }
+    ]
+}
