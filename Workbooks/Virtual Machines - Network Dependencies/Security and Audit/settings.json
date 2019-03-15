@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "Compteurs de performance",
+    "name": "Sécurité et audit",
     "author": "Microsoft",
     "galleries": [
         {
