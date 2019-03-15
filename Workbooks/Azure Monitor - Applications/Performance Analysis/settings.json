@@ -1,0 +1,12 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "<span data-ttu-id=\"8ba5c-101\">Analyse des performances</span><span class=\"sxs-lookup\"><span data-stu-id=\"8ba5c-101\">Performance Analysis</span></span>",
+    "author": "Microsoft",
+    "galleries": [
+        {
+            "type": "workbook",
+            "resourceType": "Azure Monitor",
+            "order": 200
+        }
+    ]
+}

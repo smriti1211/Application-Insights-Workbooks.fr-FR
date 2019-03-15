@@ -1,12 +1,12 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
     "version": "Notebook/1.0",
-    "isLocked": false,
+    "isLocked": true,
     "items": [
         {
             "type": 1,
             "content": {
-                "json": "# <a name=\"troubleshooting-sign-ins\"></a><span data-ttu-id=\"17bb2-101\">Résolution des problèmes des connexions</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-101\">Troubleshooting Sign-ins</span></span>"
+                "json": "# <a name=\"troubleshooting-sign-ins\"></a><span data-ttu-id=\"8858f-101\">Résolution des problèmes des connexions</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-101\">Troubleshooting Sign-ins</span></span>"
             },
             "conditionalVisibility": null
         },
@@ -144,7 +144,7 @@
                         "version": "KqlParameterItem/1.0",
                         "name": "Users",
                         "type": 2,
-                        "description": "<span data-ttu-id=\"17bb2-102\">Filtrer par nom d’utilisateur</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-102\">Filter by User Name</span></span>",
+                        "description": "<span data-ttu-id=\"8858f-102\">Filtrer par nom d’utilisateur</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-102\">Filter by User Name</span></span>",
                         "isRequired": true,
                         "multiSelect": true,
                         "quote": "'",
@@ -166,7 +166,7 @@
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"sign-ins-trend-by-status\"></a><span data-ttu-id=\"17bb2-103\">Tendance des connexions par état</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-103\">Sign-ins Trend by Status</span></span>"
+                "json": "## <a name=\"sign-ins-trend-by-status\"></a><span data-ttu-id=\"8858f-103\">Tendance des connexions par état</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-103\">Sign-ins Trend by Status</span></span>"
             },
             "conditionalVisibility": null
         },
@@ -197,7 +197,7 @@
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"top-errors\"></a><span data-ttu-id=\"17bb2-104\">Erreurs les plus fréquentes</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-104\">Top Errors</span></span>"
+                "json": "## <a name=\"top-errors\"></a><span data-ttu-id=\"8858f-104\">Erreurs les plus fréquentes</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-104\">Top Errors</span></span>"
             },
             "conditionalVisibility": null
         },
@@ -240,7 +240,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"-of-sign-ins-waiting-for-user-action\"></a><span data-ttu-id=\"17bb2-105\">Nombre de connexions en attente d’une action utilisateur</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-105\"># of Sign-ins waiting for user action</span></span> "
+                "json": "### <a name=\"-of-sign-ins-waiting-for-user-action\"></a><span data-ttu-id=\"8858f-105\">Nombre de connexions en attente d’une action utilisateur</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-105\"># of Sign-ins waiting for user action</span></span> "
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -283,7 +283,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"sign-ins-failure-due-to-ca-policies\"></a><span data-ttu-id=\"17bb2-106\">Échec des connexions en raison des stratégies d’accès conditionnel</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-106\">Sign-ins failure due to CA Policies</span></span>"
+                "json": "### <a name=\"sign-ins-failure-due-to-ca-policies\"></a><span data-ttu-id=\"8858f-106\">Échec des connexions en raison des stratégies d’accès conditionnel</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-106\">Sign-ins failure due to CA Policies</span></span>"
             },
             "conditionalVisibility": null
         },
@@ -350,7 +350,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"legacy-authentications-sign-in-errors\"></a><span data-ttu-id=\"17bb2-107\">Erreurs des connexions avec authentifications héritées</span><span class=\"sxs-lookup\"><span data-stu-id=\"17bb2-107\">Legacy Authentications Sign-in Errors</span></span>"
+                "json": "### <a name=\"legacy-authentications-sign-in-errors\"></a><span data-ttu-id=\"8858f-107\">Erreurs des connexions avec authentifications héritées</span><span class=\"sxs-lookup\"><span data-stu-id=\"8858f-107\">Legacy Authentications Sign-in Errors</span></span>"
             },
             "conditionalVisibility": null
         },
