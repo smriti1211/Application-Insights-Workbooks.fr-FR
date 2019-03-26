@@ -1,15 +1,12 @@
 {
-    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
     "version": "Notebook/1.0",
-    "isLocked": true,
     "items": [
         {
             "type": 1,
             "content": {
                 "json": "# <a name=\"troubleshooting-issues-using-performance-counters\"></a>Résolution des problèmes d’utilisation des compteurs de performance"
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 9,
@@ -95,26 +92,22 @@
                             "allowCustom": null
                         },
                         "value": {
-                            "durationMs": 14400000,
-                            "createdTime": "2018-05-16T21:34:47.842Z",
-                            "isInitialTime": false,
-                            "grain": 1,
-                            "useDashboardTimeRange": false
+                            "durationMs": 14400000
                         }
                     }
                 ],
+                "style": "pills",
+                "queryType": 0,
                 "resourceType": "microsoft.insights/components"
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 1,
             "content": {
                 "json": "## <a name=\"problem---high-cpu-utilization\"></a>Problème : Utilisation élevée du processeur\nUne utilisation élevée constante du processeur peut entraîner des problèmes de performances et de disponibilité dans votre application déployée. Cette section vous aide à comprendre quels serveurs fonctionnent d’une façon suffisamment intensive pour affecter potentiellement la fiabilité de votre application. "
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 9,
@@ -168,10 +161,11 @@
                         "value": ">"
                     }
                 ],
+                "style": "pills",
+                "queryType": 0,
                 "resourceType": "microsoft.insights/components"
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 3,
@@ -183,6 +177,9 @@
                 "aggregation": 0,
                 "showAnnotations": false,
                 "showAnalytics": false,
+                "noDataMessage": "Looks like this app is not collecting the specified performance counter. More info on collecting counters can be found at: https://docs.microsoft.com/en-us/azure/azure-monitor/app/performance-counters",
+                "timeContextFromParameter": null,
+                "queryType": 0,
                 "resourceType": "microsoft.insights/components",
                 "visualization": "table",
                 "gridSettings": {
@@ -208,24 +205,22 @@
                     ]
                 }
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"causes\"></a>Causes\nUne utilisation élevée du processeur indique généralement que la charge sur votre système est plus élevée que ce que les ressources de calcul provisionnées peuvent traiter. Ceci peut se produire si l’utilisation de votre application a augmenté ou en raison d’une régression des performances de l’application dans un déploiement.\n\nVoici d’autres raisons possibles : travaux fréquents ou tâches planifiées sur l’ordinateur, modules/plug-ins/extensions en nombre excessif, trop d’applications web auxquelles répondre à partir de la machine, bots Internet et bots de moteur de recherche, etc. "
+                "json": "## <a name=\"causes\"></a>Causes\nUne utilisation élevée du processeur indique généralement que la charge sur votre système est plus élevée que ce que les ressources de calcul provisionnées peuvent traiter. Ceci peut se produire si l’utilisation de votre application a augmenté ou en raison d’une régression des performances de l’application dans un déploiement.\n\nD’autres raisons sont possibles : \n1. Travaux fréquents ou tâches planifiées sur l’ordinateur, \n2. Modules/plug-ins/extensions trop nombreux, \n3. Trop d’applications web exécutées sur les ressources de calcul sous-jacentes, \n4. Robots et bots de moteur de recherche. "
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         },
         {
             "type": 1,
             "content": {
                 "json": "## <a name=\"solutions\"></a>solutions\nSi l’utilisation du processeur est réellement due à l’accroissement de la charge, la mise à l’échelle est la réponse la plus appropriée :\n* Scale-out : pour ajouter plus de ressources de calcul. Si 10 machines virtuelles sont utilisées pour répondre à l’application, passez-les à 15 pour alléger la charge des machines virtuelles existantes.\n* Scale-up : utiliser des ressources d’une qualité supérieure (passage d’un processeur à 2 cœurs à un processeur à 8 cœurs)"
             },
-            "conditionalVisibility": null,
-            "halfWidth": false
+            "conditionalVisibility": null
         }
-    ]
+    ],
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
 }
