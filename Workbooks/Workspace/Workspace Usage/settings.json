@@ -1,0 +1,12 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "<span data-ttu-id=\"0b806-101\">Utilisation de l’espace de travail</span><span class=\"sxs-lookup\"><span data-stu-id=\"0b806-101\">Workspace Usage</span></span>",
+    "author": "Microsoft",
+    "galleries": [
+        {
+            "type": "workbook",
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "order": 200
+        }
+    ]
+}
