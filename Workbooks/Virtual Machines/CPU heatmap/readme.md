@@ -1,0 +1,19 @@
+# <a name="cpu-heatmap"></a><span data-ttu-id="df8e2-101">Carte thermique du processeur</span><span class="sxs-lookup"><span data-stu-id="df8e2-101">CPU heatmap</span></span>
+
+<span data-ttu-id="df8e2-102">Ce classeur est un bon moyen de visualiser les zones réactives dans l’utilisation du processeur de vos machines virtuelles.</span><span class="sxs-lookup"><span data-stu-id="df8e2-102">This workbook is a good way to visualize hot spots in the CPU utilization of your virtual machines.</span></span>
+
+![Image d’une carte thermique de processeur](cpu-heatmap.png)
+
+## <a name="changing-the-cpu-threshold"></a><span data-ttu-id="df8e2-104">Changement du seuil de processeur</span><span class="sxs-lookup"><span data-stu-id="df8e2-104">Changing the CPU threshold</span></span>
+<span data-ttu-id="df8e2-105">Par défaut, ce classeur met en évidence les machines virtuelles avec un `Percentage CPU` moyen supérieur à 75 %.</span><span class="sxs-lookup"><span data-stu-id="df8e2-105">By default, this workbook highlights virtual machines with average `Percentage CPU` greater than 75%.</span></span> <span data-ttu-id="df8e2-106">Si vous souhaitez augmenter ou diminuer ce seuil, voici les étapes à suivre :</span><span class="sxs-lookup"><span data-stu-id="df8e2-106">If you wish for this threshold to be higher or lower, these are the steps for follow:</span></span>
+
+1. <span data-ttu-id="df8e2-107">Cliquez sur l’élément `Edit` dans la barre d’outils.</span><span class="sxs-lookup"><span data-stu-id="df8e2-107">Click the `Edit` item in the toolbar.</span></span>
+2. <span data-ttu-id="df8e2-108">Cliquez sur le bouton `↑ Edit` en bas à droite du contrôle hive.</span><span class="sxs-lookup"><span data-stu-id="df8e2-108">Click on the `↑ Edit` button to the bottom-right of the hive control.</span></span>
+3. <span data-ttu-id="df8e2-109">Faites défiler la liste `Columns Available After Merge` vers le bas et sélectionnez l’élément `[Added column] - Cell Color`.</span><span class="sxs-lookup"><span data-stu-id="df8e2-109">In the `Columns Available After Merge` list, scroll down and select the `[Added column] - Cell Color` item.</span></span>
+4. <span data-ttu-id="df8e2-110">Cliquez sur le bouton `Edit added item` dans la barre d’outils du contrôle hive.</span><span class="sxs-lookup"><span data-stu-id="df8e2-110">Click on the `Edit added item` button in the hive controls toolbar.</span></span>
+5. <span data-ttu-id="df8e2-111">Dans le volet qui apparaît, cliquez sur `Edit` sur l’élément qui indique `Percentage CPU > 75 Result is E8976A` pour voir une fenêtre contextuelle de paramètres.</span><span class="sxs-lookup"><span data-stu-id="df8e2-111">In the pane tha opens up, click `Edit` on the item that says `Percentage CPU > 75 Result is E8976A` to see a settings pop up</span></span>
+    1. <span data-ttu-id="df8e2-112">Affectez au champ `Second operand` le seuil de votre choix, par exemple 90.</span><span class="sxs-lookup"><span data-stu-id="df8e2-112">Set the `Second operand` field to the threshold you want - say 90.</span></span>
+        <span data-ttu-id="df8e2-113">![Image d’une carte thermique de processeur](cpu-heatmap-column-settings.png)</span><span class="sxs-lookup"><span data-stu-id="df8e2-113">![Image a CPU heatmap](cpu-heatmap-column-settings.png)</span></span>
+    2. <span data-ttu-id="df8e2-114">Cliquez sur op dans la fenêtre contextuelle.</span><span class="sxs-lookup"><span data-stu-id="df8e2-114">Click op in the popup.</span></span>
+6. <span data-ttu-id="df8e2-115">Cliquez sur Enregistrer et fermer.</span><span class="sxs-lookup"><span data-stu-id="df8e2-115">Click 'Save and close'</span></span>
+7. <span data-ttu-id="df8e2-116">Choisissez `Done Editing` dans la barre d’outils du classeur.</span><span class="sxs-lookup"><span data-stu-id="df8e2-116">Choose `Done Editing` in the workbook toolbar.</span></span>
