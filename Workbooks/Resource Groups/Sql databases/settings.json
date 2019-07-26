@@ -1,12 +1,11 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "Carte thermique de l’utilisation du processeur",
+    "name": "Bases de données SQL",
     "author": "Microsoft",
     "galleries": [
         {
             "type": "workbook",
-            "resourceType": "Azure Monitor",
-            "categoryKey": "azureMonitorVirtualMachines",
+            "resourceType": "microsoft.resources/resourcegroups",
             "order": 300
         }
     ]
