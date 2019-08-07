@@ -1,8 +1,13 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"f4db3-101\">E/S disque du nœud</span><span class=\"sxs-lookup\"><span data-stu-id=\"f4db3-101\">Node Disk IO</span></span>",
+    "name": "<span data-ttu-id=\"928a9-101\">E/S disque du nœud</span><span class=\"sxs-lookup\"><span data-stu-id=\"928a9-101\">Node Disk IO</span></span>",
     "author": "Microsoft",
     "galleries": [
+        {
+            "type": "container-insights",
+            "resourceType": "Microsoft.ContainerService/managedClusters",
+            "order": 200
+        },
         {
             "type": "workbook",
             "resourceType": "Microsoft.ContainerService/managedClusters",
