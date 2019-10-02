@@ -1,16 +1,11 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"2ac89-101\">Intégration continue de la capacité de disque du nœud</span><span class=\"sxs-lookup\"><span data-stu-id=\"2ac89-101\">Node Disk Capacity CI</span></span>",
+    "name": "<span data-ttu-id=\"0b858-101\">Intégration continue de la capacité de disque du nœud</span><span class=\"sxs-lookup\"><span data-stu-id=\"0b858-101\">Node Disk Capacity CI</span></span>",
     "author": "Microsoft",
     "isPreview": true,
     "galleries": [
         {
             "type": "container-insights",
-            "resourceType": "Microsoft.ContainerService/managedClusters",
-            "order": 100
-        },
-        {
-            "type": "workbook",
             "resourceType": "Microsoft.ContainerService/managedClusters",
             "order": 100
         }
