@@ -16,7 +16,7 @@
                         "query": "SapHana_LoadHistory_CL\r\n| project HOST_s\r\n| take 1",
                         "isHiddenWhenLocked": true,
                         "timeContext": {
-                            "durationMs": 1800000
+                            "durationMs": 43200000
                         },
                         "queryType": 0,
                         "resourceType": "microsoft.operationalinsights/workspaces"
@@ -191,7 +191,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"c0dfe-101\">⚠ L’ingestion des métriques est toujours en cours ; notez que l’affichage des données peut prendre jusqu’à 30 minutes.</span><span class=\"sxs-lookup\"><span data-stu-id=\"c0dfe-101\">⚠ Metrics ingestion is still in progress; please note that it may take up to 30 minutes for data to appear.</span></span>\n"
+                "json": "⚠ L’ingestion des métriques est toujours en cours ; notez que l’affichage des données peut prendre jusqu’à 30 minutes.\n"
             },
             "conditionalVisibility": {
                 "parameterName": "testDataExist",
@@ -1318,7 +1318,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"c0dfe-102\">La détection d’anomalie utilise des fonctionnalités de machine learning intégrées pour trouver la **référence de base** et les **schémas quotidiens** de l’utilisation du processeur/de la mémoire, puis extrait les points **anormaux**.</span><span class=\"sxs-lookup\"><span data-stu-id=\"c0dfe-102\">Anomaly detection uses built in  machine learning capabilities to find  the **baseline** , **daily patterns** in CPU / Memory usage and  extracts **anomalous** points.</span></span>  <span data-ttu-id=\"c0dfe-103\">Au moins 2 jours de données doivent être collectés par SAP Monitor pour examiner les schémas quotidiens.</span><span class=\"sxs-lookup\"><span data-stu-id=\"c0dfe-103\">Minimum 2 days of data should be collected by SAP Monitor for cheking the daily patterns.</span></span>"
+                "json": "La détection d’anomalie utilise des fonctionnalités de machine learning intégrées pour trouver la **référence de base** et les **schémas quotidiens** de l’utilisation du processeur/de la mémoire, puis extrait les points **anormaux**.  Au moins 2 jours de données doivent être collectés par SAP Monitor pour examiner les schémas quotidiens."
             },
             "conditionalVisibility": {
                 "parameterName": "selectedTab",
