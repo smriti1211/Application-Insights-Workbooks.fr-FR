@@ -1,0 +1,19 @@
+{
+    "name": "Rapport Vue d’ensemble de la sécurité",
+    "description": "Récapitulatif des tentatives de connexion et liste de certains comptes sur lesquels effectuer l’archivage",
+    "icon": "aadds-logo",
+    "tags": [
+        "AADDS",
+        "Audit logs"
+    ],
+    "author": "Microsoft",
+    "galleries": [
+        {
+            "type": "workbook",
+            "resourceType": "Microsoft.AAD/domainServices",
+            "order": 100
+        }
+    ],
+    "order": 100,
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json"
+}
