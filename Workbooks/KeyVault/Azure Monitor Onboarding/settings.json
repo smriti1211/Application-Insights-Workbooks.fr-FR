@@ -1,0 +1,12 @@
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
+    "name": "Intégration de journaux de diagnostic",
+    "author": "Microsoft",
+    "galleries": [
+        {
+            "type": "keyvaults-insights",
+            "resourceType": "Azure Monitor",
+            "order": 500
+        }
+    ]
+}
