@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"f6e7f-101\">Calendrier de l’utilisation</span><span class=\"sxs-lookup\"><span data-stu-id=\"f6e7f-101\">Usage Calendar</span></span>",
+    "name": "Calendrier de l’utilisation",
     "author": "Microsoft",
     "galleries": [
         {

@@ -6,7 +6,7 @@
         {
             "type": 1,
             "content": {
-                "json": "# <a name=\"virtual-machines-classic-metrics\"></a><span data-ttu-id=\"4b622-101\">Métriques des machines virtuelles (classiques)</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-101\">Virtual Machines (Classic) Metrics</span></span>"
+                "json": "# <a name=\"virtual-machines-classic-metrics\"></a>Métriques des machines virtuelles (classiques)"
             },
             "conditionalVisibility": null
         },
@@ -152,7 +152,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"percentage-cpu\"></a><span data-ttu-id=\"4b622-102\">Percentage CPU</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-102\">Percentage CPU</span></span>"
+                "json": "### <a name=\"percentage-cpu\"></a>Percentage CPU"
             },
             "conditionalVisibility": null
         },
@@ -189,7 +189,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"4b622-103\">*Pourcentage d’UC* est le pourcentage d’unités compute allouées actuellement utilisées par les machines virtuelles.</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-103\">*Percentage CPU* is the percentage of allocated compute units that are currently in use by the Virtual Machine(s).</span></span>"
+                "json": "*Pourcentage d’UC* est le pourcentage d’unités compute allouées actuellement utilisées par les machines virtuelles."
             },
             "conditionalVisibility": null
         },
@@ -203,7 +203,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"disk-reads\"></a><span data-ttu-id=\"4b622-104\">Lectures disque</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-104\">Disk Reads</span></span>"
+                "json": "### <a name=\"disk-reads\"></a>Lectures disque"
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -211,7 +211,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"disk-writes\"></a><span data-ttu-id=\"4b622-105\">Écritures disque</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-105\">Disk Writes</span></span>"
+                "json": "### <a name=\"disk-writes\"></a>Écritures disque"
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -281,7 +281,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"4b622-106\">*Lectures disque* est le nombre moyen d’octets lus à partir du disque pendant la période de supervision.</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-106\">*Disk reads* is the average bytes read from disk during monitoring period.</span></span>"
+                "json": "*Lectures disque* est le nombre moyen d’octets lus à partir du disque pendant la période de supervision."
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -289,7 +289,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"4b622-107\">*Écritures disque* est le nombre moyen d’octets écrits sur le disque pendant la période de supervision.</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-107\">*Disk writes* is the average bytes written to disk during monitoring period.</span></span>"
+                "json": "*Écritures disque* est le nombre moyen d’octets écrits sur le disque pendant la période de supervision."
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -304,7 +304,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"network-in\"></a><span data-ttu-id=\"4b622-108\">Network In</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-108\">Network In</span></span>"
+                "json": "### <a name=\"network-in\"></a>Network In"
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -312,7 +312,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"network-out\"></a><span data-ttu-id=\"4b622-109\">Network Out</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-109\">Network Out</span></span>"
+                "json": "### <a name=\"network-out\"></a>Network Out"
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -382,7 +382,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"4b622-110\">*Entrée réseau* est le nombre d’octets reçus sur toutes les interfaces réseau par les machines virtuelles (trafic entrant).</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-110\">*Network In*  is the number of bytes received on all network interfaces by the Virtual Machine(s) (Incoming Traffic).</span></span>"
+                "json": "*Entrée réseau* est le nombre d’octets reçus sur toutes les interfaces réseau par les machines virtuelles (trafic entrant)."
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -390,7 +390,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"4b622-111\">*Sortie réseau* est le nombre d’octets sortants sur toutes les interfaces réseau par les machines virtuelles (trafic sortant).</span><span class=\"sxs-lookup\"><span data-stu-id=\"4b622-111\">*Network out* is the number of bytes out on all network interfaces by the Virtual Machine(s) (Outgoing Traffic).</span></span>"
+                "json": "*Sortie réseau* est le nombre d’octets sortants sur toutes les interfaces réseau par les machines virtuelles (trafic sortant)."
             },
             "conditionalVisibility": null,
             "customWidth": "50"

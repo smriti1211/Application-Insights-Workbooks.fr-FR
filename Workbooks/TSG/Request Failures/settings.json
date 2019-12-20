@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"a1927-101\">Échecs des requêtes</span><span class=\"sxs-lookup\"><span data-stu-id=\"a1927-101\">Request Failures</span></span>",
+    "name": "Échecs des requêtes",
     "author": "Microsoft",
     "galleries": [
         {
