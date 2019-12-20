@@ -300,7 +300,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"network-in\"></a>Entrée réseau"
+                "json": "### <a name=\"network-in\"></a>Network In"
             },
             "conditionalVisibility": null,
             "customWidth": "50"
@@ -308,7 +308,7 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"network-out\"></a>Sortie réseau"
+                "json": "### <a name=\"network-out\"></a>Network Out"
             },
             "conditionalVisibility": null,
             "customWidth": "50"

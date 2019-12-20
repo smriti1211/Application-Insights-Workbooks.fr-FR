@@ -139,7 +139,7 @@
         {
             "type": 1,
             "content": {
-                "json": "# <a name=\"funnels\"></a>Tunnels"
+                "json": "# <a name=\"funnels\"></a>Entonnoirs"
             },
             "conditionalVisibility": null,
             "halfWidth": false

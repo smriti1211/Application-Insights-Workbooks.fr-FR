@@ -257,7 +257,7 @@
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"metricskafkacl-table-not-found\"></a>table metrics_kafka_CL introuvable\nVérifiez que vous avez au moins 1 cluster HDInsight Kafka avec l’intégration des journaux Azure Monitor activée et liée à cet espace de travail. Consultez la documentation <a href=\"https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial\">Utiliser les journaux Azure Monitor pour superviser les clusters HDInsight</a>."
+                "json": "## <a name=\"metrics_kafka_cl-table-not-found\"></a>table metrics_kafka_CL introuvable\nVérifiez que vous avez au moins 1 cluster HDInsight Kafka avec l’intégration des journaux Azure Monitor activée et liée à cet espace de travail. Consultez la documentation <a href=\"https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial\">Utiliser les journaux Azure Monitor pour superviser les clusters HDInsight</a>."
             },
             "conditionalVisibility": {
                 "parameterName": "KafkaMetricsTableExists",
