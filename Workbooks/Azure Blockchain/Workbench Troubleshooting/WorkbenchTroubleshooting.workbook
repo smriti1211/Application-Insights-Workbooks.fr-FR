@@ -5,14 +5,14 @@
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"azure-blockchain-workbench-logs--troubleshooting-guide\"></a>Journaux et résolution des problèmes d’Azure Blockchain Workbench\n---\n\nCe classeur est conçu pour vous aider à trouver les causes racines de vos échecs. Associez le requestId pour suivre le flux des demandes et voir ses journaux.<br/>\nPour comprendre certaines des erreurs courantes, consultez la section « Erreurs courantes dans les journaux » de notre [Guide de dépannage GitHub](https://aka.ms/workbenchtroubleshooting)."
+                "json": "## <a name=\"azure-blockchain-workbench-logs--troubleshooting-guide\"></a>Journaux d’activité et résolution des problèmes d’Azure Blockchain Workbench\n---\n\nCe classeur est conçu pour vous aider à trouver les causes racines de vos échecs. Associez le requestId pour suivre le flux des demandes et voir ses journaux d’activité.<br/>\nPour comprendre certaines des erreurs courantes, consultez la section « Erreurs courantes dans les journaux d’activité » de notre [Guide de dépannage GitHub](https://aka.ms/workbenchtroubleshooting)."
             },
             "conditionalVisibility": null
         },
         {
             "type": 1,
             "content": {
-                "json": "## <a name=\"logs-table\"></a>Tableau des journaux\n---"
+                "json": "## <a name=\"logs-table\"></a>Tableau des journaux d’activité\n---"
             },
             "conditionalVisibility": null
         },
@@ -115,7 +115,7 @@
         {
             "type": 1,
             "content": {
-                "json": "##### <a name=\"how-to-export\"></a>Comment exporter :\nCliquez sur l’icône en haut à droite du tableau des journaux du Workbench ci-dessous, puis sur « Exporter » dans le panneau supérieur droit."
+                "json": "##### <a name=\"how-to-export\"></a>Comment exporter :\nCliquez sur l’icône en haut à droite du tableau des journaux d’activité du Workbench ci-dessous, puis sur « Exporter » dans le panneau supérieur droit."
             },
             "conditionalVisibility": null
         },
