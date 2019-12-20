@@ -1,11 +1,16 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "Activité d’inscription à Intune",
+    "name": "Comptes de stockage",
     "author": "Microsoft",
     "galleries": [
         {
             "type": "workbook",
-            "resourceType": "microsoft.intune/tenant",
+            "resourceType": "Monitoring Groups",
+            "order": 200
+        },
+        {
+            "type": "storage-insights",
+            "resourceType": "Monitoring Groups",
             "order": 100
         }
     ]

@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"bba74-101\">Utilisation du processeur des machines virtuelles</span><span class=\"sxs-lookup\"><span data-stu-id=\"bba74-101\">Virtual machines CPU use</span></span>",
+    "name": "Utilisation du processeur des machines virtuelles",
     "author": "Microsoft",
     "galleries": []
 }

@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"344dc-101\">Utilisateurs nouveaux, récurrents et partis</span><span class=\"sxs-lookup\"><span data-stu-id=\"344dc-101\">New, Returning and Churned Users</span></span>",
+    "name": "Utilisateurs nouveaux, récurrents et partis",
     "author": "Microsoft",
     "galleries": [
         {

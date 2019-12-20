@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"c637f-101\">Single Policy Insights (préversion)</span><span class=\"sxs-lookup\"><span data-stu-id=\"c637f-101\">Single Policy Insights (Preview)</span></span>",
+    "name": "Single Policy Insights (préversion)",
     "author": "Microsoft",
     "isPreview": true,
     "galleries": [

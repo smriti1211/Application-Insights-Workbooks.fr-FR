@@ -5,7 +5,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "value::selected"
                 ],
@@ -64,7 +63,7 @@
         {
             "type": 1,
             "content": {
-                "json": "# <a name=\"performance-analysis\"></a><span data-ttu-id=\"b599b-101\">Analyse des performances</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-101\">Performance Analysis</span></span>"
+                "json": "# <a name=\"performance-analysis\"></a>Analyse des performances"
             },
             "conditionalVisibility": {
                 "parameterName": "ContextFree",
@@ -77,7 +76,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -234,31 +232,55 @@
                             ],
                             "allowCustom": true
                         }
-                    },
-                    {
-                        "id": "d6de19ff-cde4-41c2-9fba-b441312ea5c9",
-                        "version": "KqlParameterItem/1.0",
-                        "name": "Test",
-                        "type": 1,
-                        "query": "Perf\r\n| where TimeGenerated {TimeRange}\r\n| take 1",
-                        "crossComponentResources": [
-                            "{Workspaces}"
-                        ],
-                        "isHiddenWhenLocked": true,
-                        "queryType": 0,
-                        "resourceType": "microsoft.operationalinsights/workspaces"
                     }
                 ],
                 "style": "above",
-                "queryType": 1,
-                "resourceType": "microsoft.resourcegraph/resources"
+                "queryType": 0,
+                "resourceType": "microsoft.operationalinsights/workspaces"
             },
             "name": "parameters - 2"
         },
         {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "crossComponentResources": [
+                    "{Workspaces}"
+                ],
+                "parameters": [
+                    {
+                        "id": "e36a2c69-a3c1-4b0c-b758-b37bc16b4669",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Test",
+                        "type": 1,
+                        "query": "let perf = Perf\r\n| where TimeGenerated {TimeRange}\r\n| take 1;\r\nlet servicemap = ServiceMapComputer_CL\r\n| where TimeGenerated {TimeRange}\r\n| take 1;\r\nperf\r\n| union servicemap",
+                        "crossComponentResources": [
+                            "{Workspaces}"
+                        ],
+                        "isHiddenWhenLocked": true,
+                        "timeContext": {
+                            "durationMs": 0
+                        },
+                        "timeContextFromParameter": "TimeRange",
+                        "queryType": 0,
+                        "resourceType": "microsoft.operationalinsights/workspaces"
+                    }
+                ],
+                "style": "pills",
+                "queryType": 0,
+                "resourceType": "microsoft.operationalinsights/workspaces"
+            },
+            "conditionalVisibility": {
+                "parameterName": "_",
+                "comparison": "isEqualTo",
+                "value": "_"
+            },
+            "name": "parameters - 30"
+        },
+        {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"b599b-102\">⚠ Aucun abonnement n’a encore été sélectionné.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-102\">⚠ A subscription has not yet been selected.</span></span> <span data-ttu-id=\"b599b-103\">Sélectionnez un abonnement sous le menu déroulant `Subscriptions` ou actualisez le classeur.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-103\">Select a subscription under the `Subscriptions` dropdown or refresh the workbook.</span></span>"
+                "json": "⚠ Aucun abonnement n’a encore été sélectionné. Sélectionnez un abonnement sous le menu déroulant `Subscriptions` ou actualisez le classeur."
             },
             "conditionalVisibility": {
                 "parameterName": "Subscriptions",
@@ -270,7 +292,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"b599b-104\">⚠ Aucun compteur de performances n’a été détecté dans l’espace de travail sélectionné pour la période spécifiée (`{TimeRange:label}`).</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-104\">⚠ No performance counters were detected in the selected workspace for the specified time period (`{TimeRange:label}`).</span></span> <span data-ttu-id=\"b599b-105\">Essayez un intervalle de temps plus long, sélectionnez un autre espace de travail ou intégrez des machines virtuelles à l’espace de travail sélectionné `{Workspaces:label}`.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-105\">Either try a broader time range, select a different workspace, or onboard virtual machines to the selected workspace `{Workspaces:label}`.</span></span>\n\n<span data-ttu-id=\"b599b-106\">Si vous choisissez d’intégrer des machines virtuelles à l’espace de travail `{Workspaces:label}`, suivez l’instruction dans le lien suivant : [Azure Monitor pour machines virtuelles (préversion)](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/vminsights-overview).</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-106\">If you choose to onboard virtual machines to workspace `{Workspaces:label}`, follow the instruction in the following link: [Azure Monitor for VMs (preview)](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/vminsights-overview).</span></span>"
+                "json": "⚠ Aucun compteur de performances n’a été détecté dans l’espace de travail sélectionné pour la période spécifiée (`{TimeRange:label}`). Essayez un intervalle de temps plus long, sélectionnez un autre espace de travail ou intégrez des machines virtuelles à l’espace de travail sélectionné `{Workspaces:label}`.\n\nSi vous choisissez d’intégrer des machines virtuelles à l’espace de travail `{Workspaces:label}`, suivez l’instruction dans le lien suivant : [Azure Monitor pour machines virtuelles (préversion)](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/vminsights-overview)."
             },
             "conditionalVisibility": {
                 "parameterName": "Test",
@@ -284,12 +306,20 @@
             "content": {
                 "json": "---"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "name": "text - 4"
         },
         {
             "type": 1,
             "content": {
-                "json": "<h2 style=\"margin-bottom:0;padding-bottom:0;\"><span data-ttu-id=\"b599b-107\">100 premières machines</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-107\">Top 100 Machines</span></span></h2>"
+                "json": "<h2 style=\"margin-bottom:0;padding-bottom:0;\">100 premières machines</h2>"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "name": "text - 5"
         },
@@ -297,7 +327,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -308,7 +337,7 @@
                         "name": "ComputerNameContains",
                         "label": "Computer Name Contains",
                         "type": 1,
-                        "description": "<span data-ttu-id=\"b599b-108\">Cela permet de filtrer les ordinateurs dont le nom contient le mot clé.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-108\">This will filter the computers whose name contains the keyword.</span></span> <span data-ttu-id=\"b599b-109\">Cela permet d’interroger toutes les machines de l’espace de travail.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-109\">This will query all the machines in the workspace.</span></span>",
+                        "description": "Cela permet de filtrer les ordinateurs dont le nom contient le mot clé. Cela permet d’interroger toutes les machines de l’espace de travail.",
                         "value": ""
                     },
                     {
@@ -328,7 +357,7 @@
                         "version": "KqlParameterItem/1.0",
                         "name": "Counter",
                         "type": 2,
-                        "description": "<span data-ttu-id=\"b599b-110\">Sélectionnez un compteur de performance de machine virtuelle pour le tableau ci-dessous</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-110\">Select a VM performance counter for the table below</span></span>",
+                        "description": "Sélectionnez un compteur de performance de machine virtuelle pour le tableau ci-dessous",
                         "query": "Perf\r\n| where TimeGenerated {TimeRange}\r\n| summarize by CounterName, ObjectName, CounterText = CounterName\r\n| order by ObjectName asc, CounterText asc\r\n| project Counter = pack('counter', CounterName, 'object', ObjectName), CounterText, group = ObjectName",
                         "crossComponentResources": [
                             "{Workspaces}"
@@ -384,7 +413,7 @@
                         "version": "KqlParameterItem/1.0",
                         "name": "Aggregators",
                         "type": 2,
-                        "description": "<span data-ttu-id=\"b599b-111\">Sélectionnez un ou plusieurs agrégats différents à afficher dans le tableau ci-dessous</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-111\">Select one or more different aggregates to display in the table below</span></span>",
+                        "description": "Sélectionnez un ou plusieurs agrégats différents à afficher dans le tableau ci-dessous",
                         "isRequired": true,
                         "multiSelect": true,
                         "quote": "",
@@ -399,7 +428,7 @@
                         "version": "KqlParameterItem/1.0",
                         "name": "TableTrend",
                         "type": 2,
-                        "description": "<span data-ttu-id=\"b599b-112\">Sélectionnez un centile à afficher dans la colonne Tendance dans le tableau ci-dessous</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-112\">Select a percentile to display in the Trend column in the table below</span></span>",
+                        "description": "Sélectionnez un centile à afficher dans la colonne Tendance dans le tableau ci-dessous",
                         "isRequired": true,
                         "typeSettings": {
                             "additionalResourceOptions": []
@@ -512,7 +541,7 @@
         {
             "type": 1,
             "content": {
-                "json": "<span data-ttu-id=\"b599b-113\">Il n’y a aucun compteur de performances, intégrez des machines à cet espace de travail ou activez des compteurs de performances.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-113\">There are no performance counters, either onboard machines to this workspace or enable performance counters.</span></span>"
+                "json": "Il n’y a aucun compteur de performances, intégrez des machines à cet espace de travail ou activez des compteurs de performances."
             },
             "conditionalVisibility": {
                 "parameterName": "CounterTest",
@@ -715,6 +744,36 @@
                                 "palette": "blue"
                             }
                         }
+                    ],
+                    "labelSettings": [
+                        {
+                            "columnId": "ResourceName",
+                            "label": "ResourceName"
+                        },
+                        {
+                            "columnId": "Type",
+                            "label": "Type"
+                        },
+                        {
+                            "columnId": "Average",
+                            "label": "Average"
+                        },
+                        {
+                            "columnId": "P95th",
+                            "label": "P95th"
+                        },
+                        {
+                            "columnId": "Max",
+                            "label": "Max"
+                        },
+                        {
+                            "columnId": "Trend (Average)",
+                            "label": "Trend (Average)"
+                        },
+                        {
+                            "columnId": "Properties",
+                            "label": "Properties"
+                        }
                     ]
                 }
             },
@@ -728,7 +787,7 @@
         {
             "type": 1,
             "content": {
-                "json": "#### <a name=\"-total-bytes-networkdirection-and-bytes-networkdirectionsec-counters-are-both-being-utilized-to-display-the-network-table-the-delta-of-total-bytes-networkdirection-over-a-time-period-is-being-calculated-to-match-up-with-the-bytes-networkdirectionsec-counter-to-display-an-accurate-representation-of-network-activity-over-all-machines\"></a><span data-ttu-id=\"b599b-114\">Les compteurs `Total Bytes {NetworkDirection}` et `Bytes {NetworkDirection}/sec` ℹ sont tous les deux utilisés pour afficher le tableau du réseau.</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-114\">ℹ `Total Bytes {NetworkDirection}` and `Bytes {NetworkDirection}/sec` counters are both being utilized to display the network table.</span></span> <span data-ttu-id=\"b599b-115\">Le delta de `Total Bytes {NetworkDirection}` sur une période de temps est calculé de façon à correspondre au compteur `Bytes {NetworkDirection}/sec` pour afficher une représentation précise de l’activité réseau sur toutes les machines</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-115\">The delta of `Total Bytes {NetworkDirection}` over a time period is being calculated to match up with the `Bytes {NetworkDirection}/sec` counter to display an accurate representation of network activity over all machines</span></span>"
+                "json": "#### <a name=\"-total-bytes-no_loc_phnetworkdirectionno_loc_ph-and-bytes-no_loc_phnetworkdirectionno_loc_phsec-counters-are-both-being-utilized-to-display-the-network-table-the-delta-of-total-bytes-no_loc_phnetworkdirectionno_loc_ph-over-a-time-period-is-being-calculated-to-match-up-with-the-bytes-no_loc_phnetworkdirectionno_loc_phsec-counter-to-display-an-accurate-representation-of-network-activity-over-all-machines\"></a>Les compteurs `Total Bytes {NetworkDirection}` et `Bytes {NetworkDirection}/sec` ℹ sont tous les deux utilisés pour afficher le tableau du réseau. Le delta de `Total Bytes {NetworkDirection}` sur une période de temps est calculé de façon à correspondre au compteur `Bytes {NetworkDirection}/sec` pour afficher une représentation précise de l’activité réseau sur toutes les machines"
             },
             "conditionalVisibility": {
                 "parameterName": "ShowNetworkTable",
@@ -968,14 +1027,22 @@
         {
             "type": 1,
             "content": {
-                "json": "---\n## <a name=\"top-10-machines\"></a><span data-ttu-id=\"b599b-116\">10 premières machines</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-116\">Top 10 Machines</span></span>"
+                "json": "---\n## <a name=\"top-10-machines\"></a>10 premières machines"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "name": "text - 11"
         },
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"cpu-utilization-\"></a><span data-ttu-id=\"b599b-117\">% utilisation du processeur</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-117\">CPU Utilization %</span></span>"
+                "json": "### <a name=\"cpu-utilization-\"></a>% utilisation du processeur"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 12"
@@ -983,7 +1050,11 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"available-memory\"></a><span data-ttu-id=\"b599b-118\">Mémoire disponible</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-118\">Available Memory</span></span>"
+                "json": "### <a name=\"available-memory\"></a>Mémoire disponible"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 13"
@@ -992,7 +1063,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -1055,6 +1125,10 @@
                 "queryType": 0,
                 "resourceType": "microsoft.operationalinsights/workspaces"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "parameters - 14"
         },
@@ -1062,7 +1136,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -1125,6 +1198,10 @@
                 "queryType": 0,
                 "resourceType": "microsoft.operationalinsights/workspaces"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "parameters - 15"
         },
@@ -1164,6 +1241,10 @@
                         }
                     }
                 }
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "query - 16"
@@ -1205,13 +1286,21 @@
                     }
                 }
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "query - 17"
         },
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"bytes-sent-rate\"></a><span data-ttu-id=\"b599b-119\">Débit d’octets envoyés</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-119\">Bytes Sent Rate</span></span>"
+                "json": "### <a name=\"bytes-sent-rate\"></a>Débit d’octets envoyés"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 18"
@@ -1219,7 +1308,11 @@
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"bytes-received-rate\"></a><span data-ttu-id=\"b599b-120\">Débit d’octets reçus</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-120\">Bytes Received Rate</span></span>"
+                "json": "### <a name=\"bytes-received-rate\"></a>Débit d’octets reçus"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 19"
@@ -1228,7 +1321,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -1291,6 +1383,10 @@
                 "queryType": 0,
                 "resourceType": "microsoft.operationalinsights/workspaces"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "parameters - 20"
         },
@@ -1298,7 +1394,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -1361,6 +1456,10 @@
                 "queryType": 0,
                 "resourceType": "microsoft.operationalinsights/workspaces"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "parameters - 21"
         },
@@ -1399,6 +1498,10 @@
                         }
                     }
                 }
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "query - 22"
@@ -1439,13 +1542,21 @@
                     }
                 }
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "query - 23"
         },
         {
             "type": 1,
             "content": {
-                "json": "### <a name=\"logical-disk-space-used-\"></a><span data-ttu-id=\"b599b-121\">Disque logique - % d’espace utilisé</span><span class=\"sxs-lookup\"><span data-stu-id=\"b599b-121\">Logical Disk Space Used %</span></span>"
+                "json": "### <a name=\"logical-disk-space-used-\"></a>Disque logique - % d’espace utilisé"
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 24"
@@ -1455,6 +1566,10 @@
             "content": {
                 "json": ""
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "text - 25"
         },
@@ -1462,7 +1577,6 @@
             "type": 9,
             "content": {
                 "version": "KqlParameterItem/1.0",
-                "query": "",
                 "crossComponentResources": [
                     "{Workspaces}"
                 ],
@@ -1497,6 +1611,10 @@
                 "queryType": 0,
                 "resourceType": "microsoft.operationalinsights/workspaces"
             },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
+            },
             "customWidth": "50",
             "name": "parameters - 26"
         },
@@ -1504,6 +1622,10 @@
             "type": 1,
             "content": {
                 "json": ""
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "text - 27"
@@ -1544,6 +1666,10 @@
                         }
                     }
                 }
+            },
+            "conditionalVisibility": {
+                "parameterName": "Test",
+                "comparison": "isNotEqualTo"
             },
             "customWidth": "50",
             "name": "query - 28"

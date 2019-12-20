@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"4d755-101\">Limites de ressources de SQL Database</span><span class=\"sxs-lookup\"><span data-stu-id=\"4d755-101\">SQL Database Resource Limits</span></span>",
+    "name": "Limites de ressources de SQL Database",
     "author": "Microsoft",
     "galleries": [
         {

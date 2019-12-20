@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"d5a7b-101\">Audit d’activité Intune</span><span class=\"sxs-lookup\"><span data-stu-id=\"d5a7b-101\">Intune Audit Activity</span></span>",
+    "name": "Audit d’activité Intune",
     "author": "Microsoft",
     "galleries": [
         {

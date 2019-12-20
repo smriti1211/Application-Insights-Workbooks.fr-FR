@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"097b3-101\">Ouvrir des ports</span><span class=\"sxs-lookup\"><span data-stu-id=\"097b3-101\">Open Ports</span></span>",
+    "name": "Ouvrir des ports",
     "author": "Microsoft",
     "galleries": [
         {
